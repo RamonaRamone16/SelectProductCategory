@@ -1,7 +1,8 @@
 SELECT 
-	p.Name, 
-	C.Name
-FROM ProductsCategories AS pc
+	p.Name AS Product, 
+	C.Name AS Category
+FROM ProductsCategories AS pc // промежуточная таблица для пар продукт-категория
 JOIN Categories AS c ON c.Id = pc.CategoryId
-LEFT JOIN Products AS p ON p.Id = pc.ProductId
-ORDER BY p.Name
+LEFT JOIN Products AS p ON p.Id = pc.ProductId // LEFT JOIN чтобы произвести выборку по совпадению
+ORDER BY p.Name				       // p.Id = pc.ProductId и всех записей из Products,
+					       // у которых нет категории
